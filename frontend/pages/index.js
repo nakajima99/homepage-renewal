@@ -2,6 +2,6 @@ import { Button } from '@mui/material'
 
 export default function Home() {
   return (
-    <Button variant="outlined">test</Button>
+    <Button variant="outlined">numaaaaaaaaaaaa</Button>
   )
 }

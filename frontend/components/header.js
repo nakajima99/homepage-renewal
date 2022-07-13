@@ -1,16 +1,10 @@
 import { AppBar, Box, Toolbar, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Typography } from '@mui/material'
 import { Search } from '@mui/icons-material'
-import { styled } from '@mui/material/styles'
 import { css } from '@emotion/react'
 
 const listStyle = css`
-  /* display: flex;
-  flex-direction: row; */
+  display: flex;
 `
-
-const CustomList = styled(List)(({ }) => ({
-  display: 'flex',
-}))
 
 export const Header = () => {
   return (
@@ -40,8 +34,8 @@ const Menu = () => {
     'お問合せ',
   ]
   return (
-    <CustomList
-      // css={listStyle}
+    <List
+      css={listStyle}
     >
       {menu.map(ele => (
         <ListItem>
@@ -55,6 +49,6 @@ const Menu = () => {
           <ListItemIcon><Search /></ListItemIcon>
         </ListItemButton>
       </ListItem>
-    </CustomList>
+    </List>
   )
 }

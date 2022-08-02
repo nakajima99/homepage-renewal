@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": "public",
+    "rewrites": [
+      {
+        "source": "**/**",
+        "function": "nextjsFunc"
+      }
+    ]
+  },
+  "functions": {
+    "source": ".",
+    "ignore": [
+      "node_modules",
+      ".gitignore",
+      "Dockerfile"
+    ],
+    "predeploy": [
+      "yarn --cwd \"$PROJECT_DIR\" install",
+      "yarn --cwd \"$PROJECT_DIR\" run build"
+    ],
+    "runtime": "nodejs16"
+  }
+}

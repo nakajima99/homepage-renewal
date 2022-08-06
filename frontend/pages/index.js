@@ -2,6 +2,6 @@ import { Button } from '@mui/material'
 
 export default function Home() {
   return (<>
-    <Button variant="outlined">interbond</Button>
+    <Button variant="outlined">interbond株式会社</Button>
   </>)
 }

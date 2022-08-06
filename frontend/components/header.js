@@ -1,54 +1,81 @@
-import { AppBar, Box, Toolbar, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Typography } from '@mui/material'
-import { Search } from '@mui/icons-material'
+import { AppBar, Box, Toolbar, List, ListItem, ListItemText, Typography } from '@mui/material'
+import { Menu } from '@mui/icons-material'
 import { css } from '@emotion/react'
+import { useLayout } from '../hooks'
+import { useRouter } from 'next/router'
+
+const toolbarStyle = css`
+  /* display: flex; */
+  justify-content: space-between;
+`
+
+const logoStyle = css`
+  width: 140px;
+  cursor: pointer;
+`
 
 const listStyle = css`
   display: flex;
+  justify-content: space-between;
 `
 
+const listItemStyle = css`
+  padding: 8px;
+`
+
+const linkStyle = css`
+  cursor: pointer;
+  white-space: nowrap;
+`
+
+const menu = [
+  { text: 'ホーム', path: '/' },
+  { text: '事業内容', path: '/business-content' },
+  { text: '会社情報', path: '/companyinfo' },
+  { text: '採用情報', path: '/recruit' },
+  { text: 'お問合せ', path: '/contact' }
+]
+
 export const Header = () => {
+  const layout = useLayout()
+  console.log(layout)
   return (
     <AppBar position="static">
-      <Toolbar >
-        <Box>
+      <Toolbar css={toolbarStyle}>
+        <Box css={logoStyle}>
           <Logo />
         </Box>
-        <Menu />
+        {layout === 'pc' && <PCMenu />}
+        {layout === 'sp' && <SPMenu />}
       </Toolbar>
     </AppBar>
   )
 }
 
 const Logo = () => {
+  const router = useRouter()
   return (
-    <Typography>interbond株式会社</Typography>
+    <Typography onClick={() => router.push('/')}>interbond株式会社</Typography>
   )
 }
 
-const Menu = () => {
-  const menu = [
-    'ホーム',
-    '事業内容',
-    '会社情報',
-    '採用情報',
-    'お問合せ',
-  ]
+const PCMenu = () => {
+  const router = useRouter()
   return (
     <List
       css={listStyle}
     >
-      {menu.map(ele => (
-        <ListItem>
-          <ListItemButton>
-            <ListItemText>{ele}</ListItemText>
-          </ListItemButton>
+      {menu.map((ele, index) => (
+        <ListItem css={listItemStyle}key={index}>
+          <ListItemText css={linkStyle} onClick={() => router.push(ele.path)}>{ele.text}</ListItemText>
         </ListItem>
       ))}
-      <ListItem>
-        <ListItemButton>
-          <ListItemIcon><Search /></ListItemIcon>
-        </ListItemButton>
-      </ListItem>
     </List>
+  )
+}
+
+const SPMenu = () => {
+  return (
+    <Menu />
   )
 }

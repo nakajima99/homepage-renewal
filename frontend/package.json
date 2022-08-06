@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "firebase deploy --only functions,hosting"
+    "deploy": "firebase deploy --only functions,hosting",
+    "deploy:token": "firebase deploy --only functions,hosting --token ${FIREBAE_TOKEN}"
   },
   "engines": {
     "node": "16"

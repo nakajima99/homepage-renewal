@@ -23,4 +23,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           expires: 30d
           projectId: homepage-renewal
-          path: ./frontend
+          entrypoint: ./frontend

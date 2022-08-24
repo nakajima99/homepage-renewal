@@ -39,7 +39,6 @@ const menu = [
 
 export const Header = () => {
   const layout = useLayout()
-  console.log(layout)
   return (
     <AppBar position="static">
       <Toolbar css={toolbarStyle}>

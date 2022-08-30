@@ -23,9 +23,10 @@ const listItemStyle = css`
   padding: 8px;
 `
 
-const linkStyle = css`
+const linkStyle = color => css`
   cursor: pointer;
   white-space: nowrap;
+  color: ${color};
 `
 
 const menu = [
@@ -38,7 +39,6 @@ const menu = [
 
 export const Header = () => {
   const layout = useLayout()
-  console.log(layout)
   return (
     <AppBar position="static">
       <Toolbar css={toolbarStyle}>
@@ -61,13 +61,15 @@ const Logo = () => {
 
 const PCMenu = () => {
   const router = useRouter()
+  const pathname = router.pathname
+  const color = path => path == pathname ? 'yellow' : 'inherit'
   return (
     <List
       css={listStyle}
     >
       {menu.map((ele, index) => (
         <ListItem css={listItemStyle}key={index}>
-          <ListItemText css={linkStyle} onClick={() => router.push(ele.path)}>{ele.text}</ListItemText>
+          <ListItemText css={linkStyle(color(ele.path))} onClick={() => router.push(ele.path)}>{ele.text}</ListItemText>
         </ListItem>
       ))}
     </List>

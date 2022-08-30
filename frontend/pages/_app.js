@@ -7,10 +7,20 @@ import { CacheProvider } from '@emotion/react';
 import theme from '../styles/theme';
 import createEmotionCache from '../styles/createEmotionCache';
 import { Header } from '../components/header'
+import { css } from '@emotion/react'
+import { Box } from '@mui/material';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
+const wrapStyle = css`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  @media(max-width: 600px) {
+    padding: 0;
+  }
+`
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
@@ -22,7 +32,9 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Header />
-        <Component {...pageProps} />
+        <Box css={wrapStyle}>
+          <Component {...pageProps} />
+        </Box>
       </ThemeProvider>
     </CacheProvider>
   );

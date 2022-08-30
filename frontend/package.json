@@ -32,6 +32,6 @@
   "devDependencies": {
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
-    "firebase-tools": "^11.2.2"
+    "firebase-tools": "^11.8.0"
   }
 }

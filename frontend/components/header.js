@@ -40,7 +40,7 @@ const menu = [
 export const Header = () => {
   const layout = useLayout()
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar css={toolbarStyle}>
         <Box css={logoStyle}>
           <Logo />

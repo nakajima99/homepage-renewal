@@ -19,6 +19,6 @@
       "yarn --cwd \"$PROJECT_DIR\" install",
       "yarn --cwd \"$PROJECT_DIR\" run build"
     ],
-    "runtime": "nodejs16"
+    "runtime": "nodejs18"
   }
 }

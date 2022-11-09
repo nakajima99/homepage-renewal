@@ -16,7 +16,7 @@ const clientSideEmotionCache = createEmotionCache();
 const wrapStyle = css`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  /* padding: 0 16px; */
   @media(max-width: 600px) {
     padding: 0;
   }

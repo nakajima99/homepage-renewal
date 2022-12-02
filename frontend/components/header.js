@@ -1,8 +1,9 @@
-import { AppBar, Box, Toolbar, List, ListItem, ListItemText, Typography } from '@mui/material'
+import { AppBar, Box, Toolbar, List, ListItem, ListItemText, Typography, Drawer } from '@mui/material'
 import { Menu } from '@mui/icons-material'
 import { css } from '@emotion/react'
 import { useLayout } from '../hooks'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 const toolbarStyle = css`
   /* display: flex; */
@@ -68,7 +69,7 @@ const PCMenu = () => {
       css={listStyle}
     >
       {menu.map((ele, index) => (
-        <ListItem css={listItemStyle}key={index}>
+        <ListItem css={listItemStyle} key={index}>
           <ListItemText css={linkStyle(color(ele.path))} onClick={() => router.push(ele.path)}>{ele.text}</ListItemText>
         </ListItem>
       ))}
@@ -77,7 +78,32 @@ const PCMenu = () => {
 }
 
 const SPMenu = () => {
-  return (
-    <Menu />
-  )
+  const router = useRouter()
+  const [open, setOpen] = useState(false)
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen)
+  }
+
+  const onClickLink = (path) => () => {
+    setOpen(false)
+    router.push(path)
+  }
+
+  return (<>
+    <Menu onClick={toggleDrawer(true)} />
+    <Drawer
+      open={open}
+      anchor="right"
+      onClose={toggleDrawer(false)}
+    >
+      <List>
+        {menu.map((ele, index) => (
+          <ListItem css={listItemStyle} key={index}>
+            <ListItemText onClick={onClickLink(ele.path)}>{ele.text}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
+  </>)
 }

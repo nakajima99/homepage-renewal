@@ -32,7 +32,7 @@ const linkStyle = color => css`
 const menu = [
   { text: 'ホーム', path: '/' },
   { text: '事業内容', path: '/business-content' },
-  { text: '会社情報', path: '/companyinfo' },
+  { text: 'aaaaa', path: '/companyinfo' },
   { text: '採用情報', path: '/recruit' },
   { text: 'お問合せ', path: '/contact' }
 ]
